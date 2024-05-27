@@ -68,6 +68,11 @@ class Summernote extends InputWidget
     public $enableHelp = true;
 
     /**
+     * @var bool whether to enable display of undo and redo button. Applied only when [[useKrajeePresets]] is set to `true`.
+     */
+    public $enableUndo = true;
+    
+    /**
      * @var bool whether to enable emojis hints. If set to `true` will set hint via Github emoji API.
      */
     public $enableHintEmojis = true;
@@ -165,6 +170,10 @@ class Summernote extends InputWidget
             return;
         }
         $toolView = [];
+        if ($this->enableUndo) {
+            $toolView[] = 'undo';
+            $toolView[] = 'redo';
+        }
         if ($this->enableHelp) {
             $toolView[] = 'help';
         }
